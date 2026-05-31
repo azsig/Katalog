@@ -1,11 +1,13 @@
 :root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary: #0f172a;
-    --light-bg: #f8fafc;
-    --border: #e2e8f0;
-    --text-main: #334155;
-    --text-muted: #64748b;
+    --primary: #ff6600; /* Neon Electric Orange */
+    --primary-dark: #cc5200;
+    --secondary: #0d0d0d; /* Near Black */
+    --surface: #1a1a1a; /* Dark Charcoal */
+    --light-bg: #0d0d0d;
+    --border: rgba(255, 102, 0, 0.2);
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --font-mono: 'Fira Code', 'Roboto Mono', monospace;
 }
 
 * {
@@ -19,6 +21,14 @@ body {
     background-color: var(--light-bg);
     color: var(--text-main);
     line-height: 1.6;
+    background-image: 
+        linear-gradient(to right, rgba(255, 102, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 102, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.mono {
+    font-family: var(--font-mono);
 }
 
 .container {
@@ -28,34 +38,39 @@ body {
 }
 
 .hero {
-    background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+    background: linear-gradient(135deg, var(--secondary) 0%, #1a1a1a 100%);
     color: white;
-    padding: 100px 0 80px;
+    padding: 120px 0 100px;
     text-align: center;
+    border-bottom: 1px solid var(--border);
 }
 
 .hero .badge {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 102, 0, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
     padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 1px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     display: inline-block;
     backdrop-filter: blur(10px);
+    font-family: var(--font-mono);
 }
 
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .hero h1 span {
-    color: #60a5fa;
+    color: var(--primary);
     position: relative;
 }
 
@@ -63,60 +78,63 @@ body {
     font-size: 1.125rem;
     max-width: 700px;
     margin: 0 auto;
-    color: #cbd5e1;
+    color: var(--text-muted);
 }
 
 .catalog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
-    margin-top: -40px;
+    margin-top: -50px;
     position: relative;
     z-index: 10;
 }
 
 .card {
-    background: white;
-    border-radius: 16px;
+    background: var(--surface);
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary);
 }
 
 .card-img {
     height: 220px;
     position: relative;
     overflow: hidden;
+    background: #000;
 }
 
 .card-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    opacity: 0.8;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .card:hover .card-img img {
     transform: scale(1.05);
+    opacity: 1;
 }
 
 .tag {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--primary);
     padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 0.75rem;
+    border-radius: 2px;
+    font-size: 0.7rem;
     font-weight: 700;
-    color: var(--secondary);
-    backdrop-filter: blur(5px);
+    color: white;
+    font-family: var(--font-mono);
 }
 
 .card-body {
@@ -125,9 +143,10 @@ body {
 
 .card-body h3 {
     font-size: 1.35rem;
-    color: var(--secondary);
+    color: white;
     margin-bottom: 12px;
     font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .card-body p {
@@ -144,35 +163,38 @@ body {
     gap: 8px;
     width: 100%;
     padding: 12px;
-    background: var(--light-bg);
-    color: var(--secondary);
+    background: transparent;
+    color: var(--primary);
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
+    border-radius: 2px;
+    font-weight: 700;
     transition: all 0.3s ease;
-    border: 1px solid var(--border);
+    border: 1px solid var(--primary);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 0.85rem;
 }
 
 .btn:hover {
     background: var(--primary);
     color: white;
-    border-color: var(--primary);
 }
 
-/* Pricing Upgrade */
+/* Pricing Section */
 .pricing-wrap {
-    margin: 80px 0;
+    margin: 100px 0;
 }
 
 .pricing-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .pricing-header h2 {
-    font-size: 2.25rem;
-    color: var(--secondary);
+    font-size: 2.5rem;
+    color: white;
     margin-bottom: 12px;
+    letter-spacing: 1px;
 }
 
 .pricing-header p {
@@ -187,163 +209,129 @@ body {
 }
 
 .pricing-column {
-    background: white;
-    padding: 30px 25px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 35px 25px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     transition: all 0.3s ease;
 }
 
 .pricing-column:hover {
     border-color: var(--primary);
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
-}
-
-.pricing-column.highlight {
-    border: 2px solid var(--primary);
-    transform: scale(1.02);
-    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
-}
-
-.popular-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 4px 15px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
 }
 
 .pricing-column h4 {
-    font-size: 1.1rem;
-    color: var(--secondary);
-    margin-bottom: 25px;
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.pricing-column h4 i {
-    color: var(--primary);
+    gap: 12px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
 }
 
 .price-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
 .p-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed var(--border);
-    font-size: 0.95rem;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
 }
 
 .p-item span:first-child {
     color: var(--text-muted);
-    font-weight: 500;
 }
 
 .p-item span:last-child {
     font-weight: 700;
-    color: var(--secondary);
+    color: white;
+    font-family: var(--font-mono);
 }
 
-footer {
-    text-align: center;
-    padding: 40px 0;
-    background: white;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.25rem; }
-    .catalog-grid { margin-top: 20px; }
-    .pricing-column.highlight { transform: scale(1); }
-}
-
-/* Contact Action Section */
+/* Contact Section */
 .contact-action {
-    padding: 80px 0 60px;
-    margin-top: 60px;
-    border-top: 1px solid #e2e8f0;
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
     text-align: center;
 }
+
 .contact-header h2 {
-    font-size: 2.2rem;
-    color: var(--primary);
+    font-size: 2.5rem;
+    color: white;
     margin-bottom: 20px;
 }
-.contact-header p {
-    color: var(--text-light);
-    max-width: 600px;
-    margin: 0 auto 50px;
-    line-height: 1.8;
-}
+
 .contact-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
+    margin-top: 50px;
 }
+
 .contact-card {
     display: flex;
     align-items: center;
     padding: 25px;
-    background: #fff;
-    border-radius: 15px;
+    background: var(--surface);
+    border-radius: 4px;
     text-decoration: none;
-    color: var(--text-dark);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
-    border: 1px solid transparent;
     text-align: left;
 }
+
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--primary);
 }
+
 .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-right: 20px;
-    color: white;
+    background: rgba(255, 102, 0, 0.1);
+    color: var(--primary);
 }
-.contact-card.whatsapp:hover { border-color: #25D366; }
-.contact-card.whatsapp .icon-wrapper { background: linear-gradient(135deg, #25D366, #128C7E); }
-.contact-card.discord:hover { border-color: #5865F2; }
-.contact-card.discord .icon-wrapper { background: linear-gradient(135deg, #5865F2, #4752C4); }
-.contact-card.email:hover { border-color: #ea4335; }
-.contact-card.email .icon-wrapper { background: linear-gradient(135deg, #ea4335, #c5221f); }
-.contact-card.github:hover { border-color: #333; }
-.contact-card.github .icon-wrapper { background: linear-gradient(135deg, #333, #111); }
 
 .contact-details h3 {
     margin-bottom: 5px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
 }
+
 .contact-details p {
-    font-size: 0.9rem;
-    color: var(--text-light);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+footer {
+    text-align: center;
+    padding: 60px 0;
+    background: var(--secondary);
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
 @media (max-width: 768px) {
-    .contact-action { padding: 50px 0 30px; }
-    .contact-header h2 { font-size: 1.8rem; }
+    .hero h1 { font-size: 2.5rem; }
+    .catalog-grid { margin-top: 30px; }
 }
